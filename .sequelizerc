@@ -1,0 +1,12 @@
+const path = require("path");
+module.exports = {
+  config: path.resolve("./src/config", "config.json"),
+  "migrations-path": path.resolve("./src", "migrations"),
+  "models-path": path.resolve("./src", "models"),
+  "seeders-path": path.resolve("./src", "seeders"),
+  //   nói cho sequelize biết đường dẫn đến các file config, migrations, models, seeders để cấu hình và chạy các lệnh
+  // tạo model,
+  //tạo seeders tạo dữ liệu fake
+  // tạo migration là tạo bảng trong database
+  // config.json là file cấu hình database ,nói sequelize biết làm sao để cấu hình database
+};
