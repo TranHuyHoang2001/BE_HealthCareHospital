@@ -228,6 +228,32 @@ let getDetailDoctorById = (inputId) => {
   });
 };
 
+let getSpecialtyById = (inputId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!inputId) {
+        resolve({
+          errCode: 1,
+          message: "Missing parameter.",
+        });
+      } else {
+        let data = await db.Specialty.findOne({
+          where: { id: inputId },
+          attributes: ["name"], // Include only the "name" attribute
+          raw: true, // To get raw data (optional, if you want to get raw data)
+        });
+        if (!data) data = {};
+        resolve({
+          errCode: 0,
+          data: data,
+        });
+      }
+    } catch (error) {
+      reject(error); //errorboundary
+    }
+  });
+};
+
 let bulkCreateSchedule = (inputData) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -530,6 +556,7 @@ module.exports = {
   getAllDoctors: getAllDoctors,
   saveDetailInforDoctor: saveDetailInforDoctor,
   getDetailDoctorById: getDetailDoctorById,
+  getSpecialtyById: getSpecialtyById,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleByDate: getScheduleByDate,
   getExtraInforDoctorById: getExtraInforDoctorById,
