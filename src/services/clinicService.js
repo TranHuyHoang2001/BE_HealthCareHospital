@@ -72,7 +72,7 @@ let getDetailClinicById = async (inputId) => {
         // query 2 lan lan 1 de lay specialty, lan 2 de lay all doctor thuoc specialty do (hoac query 1 lan dung attributes include bang doctor_infor lay theo specialtyId va can sua moi quan he cac model)
         let data = await db.Clinic.findOne({
           where: { id: inputId },
-          attributes: ["name", "address","descriptionHTML", "descriptionMarkdown"],
+          attributes: ["name", "image", "address", "descriptionHTML", "descriptionMarkdown"],
         });
 
         if (data) {
@@ -81,6 +81,7 @@ let getDetailClinicById = async (inputId) => {
               where: { clinicId: inputId },
               attributes: ["doctorId", "provinceId"],
             });
+          data.image = Buffer.from(data.image, "base64").toString("binary");
           data.doctorClinic = doctorClinic;
         } else {
           data = {};
