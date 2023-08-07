@@ -13,10 +13,10 @@ Backend project using Node.js (express.js), MySQL, and Sequelize (ORM) to build 
 
 **Techstack:**
 
-- nodejs (express.js)
+- Nodejs (Express.js)
 - database: MySQL
 - ORM: Sequelize (to support access database MySQL)
-- nodemailer to send email to a patient
+- Nodemailer to send email to a patient
 
 ---
 
